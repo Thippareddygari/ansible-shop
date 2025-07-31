@@ -1,37 +1,15 @@
-- name: frontend 
-  hosts: all
-  connection: local
-  become: true
-  tasks: 
     - name: disabled nginx module
       ansible.builtin.shell: dnf module disable nginx -y
-    
+
     - name: install nginx 24
       ansible.builtin.shell: dnf install nginx -y
-    
-    
+
     - name: copy nginx config
       ansible.builtin.copy:
         src: nginx.conf
         dest: /etc/nginx/nginx.conf
-    
+
     - name: delete directory
       ansible.builtin.file:
         path: /usr/share/nginx/html
         state: absent
-    
-    - name: create directory
-      ansible.builtin.file:
-        path: /usr/share/nginx/html
-        state: directory
-    
-    - name: download and extract frontend files
-      ansible.builtiin.unarchive:
-        src: https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip
-        dest: /usr/share/nginx/html
-        remote_src: yes
-      
-    - name: start nginx service
-      ansible.builtin.systemd:
-        name: nginx
-        state: restarted
