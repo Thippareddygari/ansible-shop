@@ -9,7 +9,24 @@
         src: nginx.conf
         dest: /etc/nginx/nginx.conf
 
-    - name: delete directory
+    - name: Remove old app content
       ansible.builtin.file:
         path: /usr/share/nginx/html
         state: absent
+    
+    - name: create app content directory
+      ansible.builtin.file:
+        path: /usr/share/nginx/html
+        state: directory
+
+    - name: Download and extract app content
+      ansible.builtin.unarchive:
+        src: https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip
+        dest: /usr/share/nginx/html
+        remote_src: true
+    
+    - name: start nginx service
+      ansible.builtin.systemd:
+        name: nginx
+        state: restarted
+        enabled: true
