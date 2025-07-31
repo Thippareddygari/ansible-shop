@@ -1,0 +1,7 @@
+- name: frontend-setup
+  hosts: localhost
+  connection: local
+  become: true
+  roles:
+    - role: frontend
+      tags: frontend
