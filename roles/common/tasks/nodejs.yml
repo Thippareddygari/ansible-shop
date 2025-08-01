@@ -13,3 +13,6 @@
 - name: install nodejs dependencies
   ansible.builtin.shell: npm install
 
+- name: Include systemd_setup
+  ansible.builtin.include_tasks:
+    file: systemd_setup.yml

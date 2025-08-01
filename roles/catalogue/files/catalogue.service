@@ -1,0 +1,12 @@
+[unit]
+Description = Catalogue service
+
+[service]
+User= roboshop
+Enviroment= Mongo= true
+Environment=MONGO_URL="mongodb://mongodb-dev.kommanuthala.store:27017/catalogue"
+ExecStart=/bin/node /app/server.js
+SyslogIdentifier=catalogue
+
+[Install]
+WantedBy=multi-user.target
