@@ -1,5 +1,5 @@
 - name: add a user
-  ansible.builin.user:
+  ansible.builtin.user:
     name: roboshop
 
 - name: remove old app content
