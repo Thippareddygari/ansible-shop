@@ -3,4 +3,4 @@
   connection: local
   become: true
   roles:
-    - {{ component_name }}
+    - "{{ component_name }}"
