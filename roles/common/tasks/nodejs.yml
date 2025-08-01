@@ -1,0 +1,15 @@
+- name: Disable node js and enable node js 20
+  ansible.builtin.shell: dnf module disable nodejs -y ; dnf module enable nodejs:20 -y
+
+- name: Install nodejs
+  ansible.builtin.dnf:
+    name: nodejs
+    state: present
+
+- name: include artifact download tasks
+  ansible.builtin.include_tasks: 
+    file: artifact_download.yml    
+  
+- name: install nodejs dependencies
+  ansible.builtin.shell: npm install
+
