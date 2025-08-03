@@ -2,7 +2,7 @@
   ansible.builtin.dnf:
     name: 
       - python3
-      - python3-{{ env }}.el
+      - python3-devel
       - gcc
     state: present
 
