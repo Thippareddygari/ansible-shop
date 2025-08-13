@@ -1,0 +1,6 @@
+config_component_name:
+- cart
+- catalogue
+- user
+- shipping
+- payment
