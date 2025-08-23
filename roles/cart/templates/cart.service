@@ -2,7 +2,7 @@
 Description = Cart Service
 [Service]
 User=roboshop
-{% for item in my_secrets %}
+{% for item in my_secrets | dict2items %}
 Environment={{ item.key }}={{ item.value }}
 ExecStart=/bin/node /app/server.js
 SyslogIdentifier=cart
