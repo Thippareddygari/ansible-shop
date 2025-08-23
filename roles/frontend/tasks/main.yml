@@ -2,7 +2,7 @@
       ansible.builtin.shell: dnf module disable nginx -y
 
     - name: enable nginx 24
-      ansible.builtin.shell: dnf module enable nginx:24 -y
+      ansible.builtin.shell: dnf module enable nginx:1.24 -y
     
     - name: install nginx
       ansible.builtin.dnf:
