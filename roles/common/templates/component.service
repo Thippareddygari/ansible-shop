@@ -1,0 +1,13 @@
+[Unit]
+Description = {{ component_name | title }} Service
+[Service]
+User=roboshop
+workingDirectory=/app
+{% for item in components_secrets | dict2items %}
+Environment={{ item.key }}={{ item.value }}
+{% endfor %}
+ExecStart=/bin/node /app/server.js
+SyslogIdentifier=cart
+
+[Install]
+WantedBy=multi-user.target

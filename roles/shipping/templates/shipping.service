@@ -5,7 +5,7 @@ Description=Shipping Service
 User=roboshop
 Environment=CART_ENDPOINT=cart-{{ env }}.kommanuthala.store:8080
 Environment=DB_HOST=mysql-{{ env }}.kommanuthala.store
-ExecStart=/bin/java -jar /app/shipping.jar
+ExecStart={{ service_start_command }}
 SyslogIdentifier=shipping
 
 [Install]
