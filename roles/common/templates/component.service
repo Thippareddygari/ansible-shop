@@ -1,13 +1,14 @@
 [Unit]
 Description = {{ component_name | title }} Service
 [Service]
-User=roboshop
+User={{ service_username }}
 workingDirectory=/app
 {% for item in components_secrets | dict2items %}
 Environment={{ item.key }}={{ item.value }}
 {% endfor %}
-ExecStart=/bin/node /app/server.js
-SyslogIdentifier=cart
+ExecStart={{ service_start_command }}
+ExecStop=/bin/kill -9 $MAINPID
+SyslogIdentifier={{ component_name }}
 
 [Install]
 WantedBy=multi-user.target
