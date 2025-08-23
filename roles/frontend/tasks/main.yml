@@ -1,9 +1,14 @@
     - name: disabled nginx module
       ansible.builtin.shell: dnf module disable nginx -y
 
-    - name: install nginx 24
-      ansible.builtin.shell: dnf install nginx -y
-
+    - name: enable nginx 24
+      ansible.builtin.shell: dnf enable nginx -y
+    
+    - name: install nginx
+      ansible.builtin.dnf:
+        name: nginx
+        state: present
+        
     - name: copy nginx config
       ansible.builtin.template:
         src: nginx.conf
