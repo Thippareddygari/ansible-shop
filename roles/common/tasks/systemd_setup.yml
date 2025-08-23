@@ -1,5 +1,5 @@
-- name: retun secrets as dict 
-  ansiblt.builtin.set_fact:
+- name: retun secrets as dict
+  ansible.builtin.set_fact: 
     my_secrets: "{{ lookup('communit.hashi_vault.hashi_vault', 'roboshop-{{ env }}/data/{{component_name}} token={{vault_token}} url =http://vault-private.kommanuthala.store:8200') }}"
 
 - name: Copy systemd service file
